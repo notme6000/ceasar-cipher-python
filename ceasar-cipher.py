@@ -1,39 +1,37 @@
-print("ceasar cipher")
+print("Caesar Cipher")
+print("-------------")
 
-
-
-def user_input():
-    code = " "
-    i = 0
-    code = input("enter the code to encrypt:")
-    code_len = len(code)
-    for i in range(code_len):
-        code_new = i
-        encryption(code_new)
-
+def input_plain_text():
+    code = input("enter the plaintext for encryption: ")
+    key = int(input("enter key: "))
+    print(code, key)
+    encryption(code, key)
     
 
 
-user_input()
+def encryption(code, key):
+    encrypted_text = []
+    print(code, key)
+    Lowercase_letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-
-def encryption(code_new):
+    for str in code:
+        if str.isupper():
+            str_lower = str.lower()
+            
+            str = str_lower
+            
+            # if str_lower in Lowercase_letters:
+            #     index = Lowercase_letters.index(str_lower)
+            #     print(Lowercase_letters[index+key])
+                
+        else:
+            if str in Lowercase_letters:
+                index = Lowercase_letters.index(str)
+                encrypted_text.append(Lowercase_letters[index+key])
     
-    encrypt_list = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
-    i = 0
-    if code_new.islower():
-        pass
-    else:
-        lower_case_code = code_new.lower()
-    
-    for i in range(encrypt_list):
-        if encrypt_list[i] == lower_case_code:
-            print(i)
-            i+=1
-
-    
-
-
-
-# def decryption():
-    
+    print("plain text:", code)
+    print("encrypted text:", encrypted_text)
+                
+            
+        
+input_plain_text()
